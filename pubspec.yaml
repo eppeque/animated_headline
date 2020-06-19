@@ -1,0 +1,18 @@
+name: animated_headline
+description: A simple animated headline for your app. This package is a Flutter widget.
+version: 0.0.1
+homepage: https://github.com/eppeque/animated_headline
+
+environment:
+  sdk: ">=2.7.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+flutter:
+  uses-material-design: true
