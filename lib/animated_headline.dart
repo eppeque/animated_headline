@@ -74,7 +74,8 @@ class AnimatedHeadlineState extends AnimatedWidgetBaseState<AnimatedHeadline> {
 }
 
 class GhostStringAnimation extends Tween<String> {
-  GhostStringAnimation({String begin, String end}) : super(begin: begin, end: end);
+  GhostStringAnimation({String begin, String end})
+      : super(begin: begin, end: end);
 
   String lerp(double t) {
     if (t < 0.5) return begin;
