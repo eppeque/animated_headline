@@ -1,3 +1,7 @@
+## [1.2.0] - 2021-03-05
+
+* Null safety migration applied!
+
 ## [1.1.1] - 2020-08-12
 
 * No changes have been made to the widget.

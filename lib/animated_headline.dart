@@ -26,12 +26,12 @@ class AnimatedHeadline extends ImplicitlyAnimatedWidget {
 
   /// Creates an animated headline while the switch between two tabs.
   const AnimatedHeadline(
-      {Key key,
-      @required this.texts,
-      @required this.colors,
-      @required this.index})
-      : assert(texts.length != null && texts.length > 1),
-        assert(colors.length != null && colors.length > 1),
+      {Key? key,
+      required this.texts,
+      required this.colors,
+      required this.index})
+      : assert(texts.length > 1),
+        assert(colors.length > 1),
         assert(texts.length == colors.length),
         assert(index >= 0 && index < texts.length),
         super(key: key, duration: const Duration(milliseconds: 400));
@@ -43,16 +43,16 @@ class AnimatedHeadline extends ImplicitlyAnimatedWidget {
 }
 
 class _AnimatedHeadlineState extends AnimatedWidgetBaseState<AnimatedHeadline> {
-  CustomColorTween _colorTween;
-  StringTween _stringTween;
+  CustomColorTween? _colorTween;
+  StringTween? _stringTween;
 
   @override
   Widget build(BuildContext context) {
     return Text(
-      _stringTween.evaluate(animation),
+      _stringTween!.evaluate(animation)!,
       style: TextStyle(
         fontSize: 24.0,
-        color: _colorTween.evaluate(animation),
+        color: _colorTween!.evaluate(animation),
       ),
     );
   }
@@ -63,30 +63,30 @@ class _AnimatedHeadlineState extends AnimatedWidgetBaseState<AnimatedHeadline> {
       _colorTween,
       widget.targetColor,
       (color) => CustomColorTween(begin: color),
-    );
+    ) as CustomColorTween?;
 
     _stringTween = visitor(
       _stringTween,
       widget.targetTitle,
       (title) => StringTween(begin: title),
-    );
+    ) as StringTween?;
   }
 }
 
-class CustomColorTween extends Tween<Color> {
+class CustomColorTween extends Tween<Color?> {
   Color middle = Colors.transparent;
-  CustomColorTween({Color begin, Color end}) : super(begin: begin, end: end);
+  CustomColorTween({Color? begin, Color? end}) : super(begin: begin, end: end);
 
-  Color lerp(double t) {
+  Color? lerp(double t) {
     if (t < 0.5) return Color.lerp(begin, middle, t * 2);
     return Color.lerp(middle, end, (t - 0.5) * 2);
   }
 }
 
-class StringTween extends Tween<String> {
-  StringTween({String begin, String end}) : super(begin: begin, end: end);
+class StringTween extends Tween<String?> {
+  StringTween({String? begin, String? end}) : super(begin: begin, end: end);
 
-  String lerp(double t) {
+  String? lerp(double t) {
     if (t < 0.5) return begin;
     return end;
   }

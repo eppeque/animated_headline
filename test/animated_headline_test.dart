@@ -21,7 +21,7 @@ void main() {
                 colors: [Colors.blue, Colors.red],
                 index: index,
               ),
-              RaisedButton(
+              ElevatedButton(
                 key: buttonKey,
                 child: Text('Tap'),
                 onPressed: () => setState(() => index = 1),

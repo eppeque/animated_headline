@@ -31,11 +31,11 @@ class _MyAppState extends State<MyApp> {
           items: [
             BottomNavigationBarItem(
               icon: Icon(Icons.school),
-              title: Text('School'),
+              label: 'School',
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.business),
-              title: Text('Business'),
+              label: 'Business',
             ),
           ],
         ),
